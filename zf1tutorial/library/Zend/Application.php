@@ -77,8 +77,8 @@ class Zend_Application
     {
         $this->_environment = (string) $environment;
 
-        require_once 'Zend/Loader/Autoloader.php';
-        $this->_autoloader = Zend_Loader_Autoloader::getInstance();
+//        require_once 'Zend/Loader/Autoloader.php';
+//        $this->_autoloader = Zend_Loader_Autoloader::getInstance();
 
         if (null !== $options) {
             if (is_string($options)) {
