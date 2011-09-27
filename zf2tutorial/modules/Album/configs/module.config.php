@@ -1,12 +1,12 @@
 <?php
 $production = array(
     'di' => array( 'instance' => array(
-//        'alias' => array(
-//            'album'        => 'Album\Controller\AlbumController',
+        'alias' => array(
+            'album'        => 'Album\Controller\AlbumController',
 //            'album-db'     => 'Zend\Db\Adapter\Pdo\Sqlite',
 //            'album-mapper' => 'Album\Model\AlbumMapper',
 //            'album-table'  => 'Album\Model\DbTable\Album',
-//        ),
+        ),
 
         'preferences' => array(
             'Zend\Mvc\Router\RouteStack' => 'Zend\Mvc\Router\SimpleRouteStack',

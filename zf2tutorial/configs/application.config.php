@@ -6,7 +6,7 @@ return new Zend\Config\Config(array(
     'modules' => array(
         'ZendModule', // paradox?!
         'ZendMvc',
-       // 'Album',
+        'Album',
         'Application', // load last
     ),
     'module_config' => array( 

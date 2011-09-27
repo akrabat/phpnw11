@@ -1,8 +1,8 @@
 <?php
-$baseUrl = '/zf2-tutorial/public';
 $production = array(
     'bootstrap_class'    => 'Application\Bootstrap',
     'display_exceptions' => false,
+    'is_live_site' => true,
 
     'di' => array( 'instance' => array(
         'alias' => array(
@@ -38,7 +38,7 @@ $production = array(
         'default' => array(
             'type'    => 'Zend\Mvc\Router\Http\Regex',
             'options' => array(
-                'regex' => $baseUrl.'/(?P<controller>[^/]+)(/(?P<action>[^/]+)?)?',
+                'regex' => '/(?P<controller>[^/]+)(/(?P<action>[^/]+)?)?',
                 'defaults' => array(
                     'controller' => 'error',
                     'action'     => 'index',
@@ -49,7 +49,7 @@ $production = array(
         'home' => array(
             'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
-                'route' => $baseUrl.'/',
+                'route' => '/',
                 'defaults' => array(
                     'controller' => 'index',
                     'action'     => 'index',
@@ -59,7 +59,7 @@ $production = array(
         'trigger-error' => array(
             'type' => 'Zend\Mvc\Router\Http\Literal',
             'options' => array(
-                'route'    => $baseUrl.'/trigger-error',
+                'route'    => '/trigger-error',
                 'defaults' => array(
                     'controller' => 'index',
                     'action'     => 'trigger-error',
@@ -74,7 +74,10 @@ $testing     = $production;
 $development = $production;
 
 $testing['display_exceptions']     = true;
+$testing['is_live_site']     = false;
+
 $development['display_exceptions'] = true;
+$development['is_live_site']     = false;
 
 $config = compact('production', 'staging', 'testing', 'development');
 return $config;

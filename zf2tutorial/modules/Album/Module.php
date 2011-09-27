@@ -3,18 +3,26 @@
 namespace Album;
 
 use InvalidArgumentException,
-    Zend\Config\Config;
+    Zend\Config\Config,
+    Zend\Module\Manager as ModuleManager;
 
 class Module
 {
-    public function init()
-    {
-        $this->initAutoloader();
-    }
 
-    public function initAutoloader()
+    public function init(ModuleManager $moduleManager)
     {
-        require __DIR__ . '/autoload_register.php';
+        // add a listener to the module manager's init.post event to autoload once
+        // we have loaded all the configs
+        $moduleManager->events()->attach('init.post', function($e) use ($moduleManager) {
+                $is_live_site = $moduleManager->getMergedConfig(false)->is_live_site;
+                if ($is_live_site) {
+                    require __DIR__ . '/autoload_register.php';
+                } else {
+                    $standardAutoloader = new \Zend\Loader\StandardAutoloader();
+                    $standardAutoloader->registerNamespace(__NAMESPACE__, __DIR__);
+                    $standardAutoloader->register();
+                }
+            });
     }
 
     public function getConfig($env = null)
@@ -25,17 +33,10 @@ class Module
         }
         if (!isset($config->{$env})) {
             throw new InvalidArgumentException(sprintf(
-                'Unrecognized environment "%s" provided to "%s"',
-                $env,
-                __METHOD__
+                    'Unrecognized environment "%s" provided to "%s"', $env, __METHOD__
             ));
         }
 
         return $config->{$env};
-    }
-
-    public function getClassmap()
-    {
-        return include __DIR__ . '/classmap.php';
     }
 }
