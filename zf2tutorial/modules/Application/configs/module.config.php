@@ -7,7 +7,6 @@ $production = array(
     'di' => array( 'instance' => array(
         'alias' => array(
             'index' => 'Application\Controller\IndexController',
-            'error' => 'Application\Controller\ErrorController',
             'view'  => 'Zend\View\PhpRenderer',
         ),
 
@@ -40,7 +39,7 @@ $production = array(
             'options' => array(
                 'regex' => '/(?P<controller>[^/]+)(/(?P<action>[^/]+)?)?',
                 'defaults' => array(
-                    'controller' => 'error',
+                    'controller' => 'index',
                     'action'     => 'index',
                 ),
                 'spec' => '/%controller%/%action%',
@@ -53,16 +52,6 @@ $production = array(
                 'defaults' => array(
                     'controller' => 'index',
                     'action'     => 'index',
-                ),
-            ),
-        ),
-        'trigger-error' => array(
-            'type' => 'Zend\Mvc\Router\Http\Literal',
-            'options' => array(
-                'route'    => '/trigger-error',
-                'defaults' => array(
-                    'controller' => 'index',
-                    'action'     => 'trigger-error',
                 ),
             ),
         ),

@@ -8,16 +8,17 @@
 <body>
 <div id="header">
     <div id="header-logo">
-        <a href="<?php echo $this->plugin('url')->direct(array('controller' => 'index', 'action' => 'index'), array('name' => 'home')) ?>">
+        <a href="<?php echo $this->plugin('url')->direct(array('controller' => 'index', 'action' => 'index'), 
+            array('name' => 'home')) ?>">
             PHPNW11 Tutorial</a>
     </div>
     <div id="header-navigation">
         <a href="<?php echo $this->plugin('url')->direct(
             array('controller'=>'index', 'action' => 'index'),
-            array('name' => 'default')) ?>">Home</a>
+            array('name' => 'home')) ?>">Home</a>
         |
         <a href="<?php echo $this->plugin('url')->direct(
-            array('module'=>'album', 'controller'=>'index', 'action' => 'index'),
+            array('controller'=>'album', 'action' => 'index'),
             array('name' => 'default')) ?>">Albums</a>
     </div>
 </div>
