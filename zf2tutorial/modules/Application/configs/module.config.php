@@ -45,16 +45,16 @@ $production = array(
                 'spec' => '/%controller%/%action%',
             ),
         ),
-//        'home' => array(
-//            'type' => 'Zend\Mvc\Router\Http\Literal',
-//            'options' => array(
-//                'route' => '/',
-//                'defaults' => array(
-//                    'controller' => 'index',
-//                    'action'     => 'index',
-//                ),
-//            ),
-//        ),
+        'home' => array(
+            'type' => 'Zend\Mvc\Router\Http\Literal',
+            'options' => array(
+                'route' => '/',
+                'defaults' => array(
+                    'controller' => 'index',
+                    'action'     => 'index',
+                ),
+            ),
+        ),
     ),
 );
 
