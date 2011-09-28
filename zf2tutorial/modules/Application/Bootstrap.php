@@ -53,7 +53,7 @@ class Bootstrap
          * router composed in the Application instance.
          */
 
-        $router = $app->getLocator()->get('Zend\Mvc\Router\SimpleRouteStack');
+        $router = $app->getLocator()->get('Zend\Mvc\Router\Http\TreeRouteStack');
         $router->addRoutes($this->config->routes->toArray());
 
         $app->setRouter($router);

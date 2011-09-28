@@ -9,12 +9,12 @@ $production = array(
         ),
 
         'preferences' => array(
-            'Zend\Mvc\Router\RouteStack' => 'Zend\Mvc\Router\SimpleRouteStack',
+            'Zend\Mvc\Router\RouteStack' => 'Zend\Mvc\Router\Http\TreeRouteStack',
         ),
 
         'Album\Controller\AlbumController' => array(
             'parameters' => array(
-                'router' => 'Zend\Mvc\Router\SimpleRouteStack',
+                'router' => 'Zend\Mvc\Router\Http\TreeRouteStack',
                 'table'  => 'Album\Model\DbTable\Albums',
             ),
         ),
