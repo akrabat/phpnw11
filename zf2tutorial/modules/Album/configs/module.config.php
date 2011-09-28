@@ -19,7 +19,7 @@ $production = array(
             ),
         ),
 
-        'Album\Model\DbTable\Album' => array(
+        'Album\Model\DbTable\Albums' => array(
             'parameters' => array(
                 'config' => 'Zend\Db\Adapter\Pdo\Sqlite',
         )),
