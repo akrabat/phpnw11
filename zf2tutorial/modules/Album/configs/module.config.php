@@ -5,7 +5,7 @@ $production = array(
             'album'        => 'Album\Controller\AlbumController',
 //            'album-db'     => 'Zend\Db\Adapter\Pdo\Sqlite',
 //            'album-mapper' => 'Album\Model\AlbumMapper',
-//            'album-table'  => 'Album\Model\DbTable\Album',
+//            'album-table'  => 'Album\Model\DbTable\Albums',
         ),
 
         'preferences' => array(
@@ -14,15 +14,10 @@ $production = array(
 
         'Album\Controller\AlbumController' => array(
             'parameters' => array(
-                'mapper' => 'Album\Model\AlbumMapper',
                 'router' => 'Zend\Mvc\Router\SimpleRouteStack',
+                'table'  => 'Album\Model\DbTable\Albums',
             ),
         ),
-
-        'Album\Model\AlbumMapper' => array(
-            'parameters' => array(
-                'dbTable' => 'Album\Model\DbTable\Album',
-        )),
 
         'Album\Model\DbTable\Album' => array(
             'parameters' => array(
@@ -31,7 +26,7 @@ $production = array(
 
         'Zend\Db\Adapter\Pdo\Sqlite' => array(
             'parameters' => array(
-                'config' => array('dbname' => __DIR__ . '/../data/Album.db'),
+                'config' => array('dbname' => __DIR__ . '/../../../data/data.sqlite'),
         )),
 
         'Zend\View\PhpRenderer' => array(
