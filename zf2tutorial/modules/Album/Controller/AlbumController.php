@@ -38,19 +38,69 @@ class AlbumController extends ActionController
                 $this->albums->addAlbum($artist, $title);
 
                 // Redirect to list of albums
-                $url = $this->router->assemble(
-                    array('controller' => 'album', 'action' => 'index'),
-                    array('name' => 'default')
-                );
-                $this->response->setStatusCode(302);
-                $this->response->headers()->addHeaderLine('Location', $url);
-                return $this->response;
-            } else {
-                $form->populate($formData);
+                return $this->redirectToList();
             }
         }
 
         return array('form' => $form);
+    }
+
+    public function editAction()
+    {
+        $form = new AlbumForm();
+        $form->id->addValidator('GreaterThan', true, array('min' => 0));
+        $form->submit->setLabel('Add');
+
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $formData = $request->post()->toArray();
+            if ($form->isValid($formData)) {
+                $id = $form->getValue('id');
+                $artist = $form->getValue('artist');
+                $title = $form->getValue('title');
+                $this->albums->updateAlbum($id, $artist, $title);
+
+                // Redirect to list of albums
+                return $this->redirectToList();
+            }
+        } else {
+            $id = $request->query()->get('id', 0);
+            if ($id > 0) {
+                $form->populate($this->albums->getAlbum($id));
+            }
+        }
+
+        return array('form' => $form);
+    }
+
+    public function deleteAction()
+    {
+        $request = $this->getRequest();
+        if ($request->isPost()) {
+            $del = $request->post()->get('del', 'No');
+            if ($del == 'Yes') {
+                $id = (int)$request->post()->get('id');
+                $this->albums->deleteAlbum($id);
+            }
+
+            // Redirect to list of albums
+            return $this->redirectToList();
+        } 
+
+        $id = $request->query()->get('id', 0);
+        return array('album' => $this->albums->getAlbum($id));
+    }
+    
+    protected function redirectToList()
+    {
+        // Redirect to list of albums
+        $url = $this->router->assemble(
+            array('controller' => 'album', 'action' => 'index'),
+            array('name' => 'default')
+        );
+        $this->response->setStatusCode(302);
+        $this->response->headers()->addHeaderLine('Location', $url);
+        return $this->response;
     }
 
     public function setTable(Albums $table)
