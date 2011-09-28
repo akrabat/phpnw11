@@ -18,8 +18,6 @@ class AlbumController extends ActionController
     public function indexAction()
     {
         return array(
-            'title' => 'My Albums',
-            'content' => '',
             'albums' => $this->albums->fetchAll(),
         );
     }

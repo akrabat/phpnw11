@@ -1,10 +1,10 @@
 <?php 
 $vars = $this->vars();
 extract($this->vars()->getArrayCopy());
+$title = 'My albums';
 $this->title = $title;
 ?>
 <h1><?php echo $title;?></h1>
-<p><?php echo $content ;?></p>
 
 <p><a href="<?php echo $this->plugin('url')->direct(array('controller'=>'album', 
         'action'=>'add'), array('name' => 'default'));?>">Add new album</a></p>
