@@ -37,7 +37,7 @@ $production = array(
         'default' => array(
             'type'    => 'Zend\Mvc\Router\Http\Regex',
             'options' => array(
-                'regex' => '/(?P<controller>[^/]+)(/(?P<action>[^/]+)?)?',
+                'regex' => '/(?P<controller>[^/]+)?(/(?P<action>[^/]*)?)?',
                 'defaults' => array(
                     'controller' => 'index',
                     'action'     => 'index',
@@ -45,16 +45,16 @@ $production = array(
                 'spec' => '/%controller%/%action%',
             ),
         ),
-        'home' => array(
-            'type' => 'Zend\Mvc\Router\Http\Literal',
-            'options' => array(
-                'route' => '/',
-                'defaults' => array(
-                    'controller' => 'index',
-                    'action'     => 'index',
-                ),
-            ),
-        ),
+//        'home' => array(
+//            'type' => 'Zend\Mvc\Router\Http\Literal',
+//            'options' => array(
+//                'route' => '/',
+//                'defaults' => array(
+//                    'controller' => 'index',
+//                    'action'     => 'index',
+//                ),
+//            ),
+//        ),
     ),
 );
 
