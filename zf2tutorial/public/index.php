@@ -9,7 +9,6 @@ defined('APPLICATION_ENV')
 require_once '../library/Zend/Loader/AutoloaderFactory.php';
 Zend\Loader\AutoloaderFactory::factory(array(
     'Zend\Loader\ClassMapAutoloader' => array(
-        __DIR__ . '/../modules/ZendModule/autoload_classmap.php', // ModuleLoader is in here
         __DIR__ . '/../library/autoload_classmap.php',
         
     ),
