@@ -3,9 +3,6 @@ $production = array(
     'di' => array( 'instance' => array(
         'alias' => array(
             'album'        => 'Album\Controller\AlbumController',
-//            'album-db'     => 'Zend\Db\Adapter\Pdo\Sqlite',
-//            'album-mapper' => 'Album\Model\AlbumMapper',
-//            'album-table'  => 'Album\Model\DbTable\Albums',
         ),
 
         'preferences' => array(
