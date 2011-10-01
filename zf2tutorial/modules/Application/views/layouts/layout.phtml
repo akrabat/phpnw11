@@ -1,24 +1,24 @@
-<?php echo $this->plugin('doctype') ?>
+<?php echo $this->doctype(); ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title><?php echo isset($this->title) ? $this->vars()->escape($this->title) . ' - ' : ''; ?>
       PHPNW11 Tutorial</title>
-  <?php echo $this->plugin('headLink')->appendStylesheet('/css/site.css') ?>
+  <?php echo $this->headLink()->appendStylesheet('/css/site.css') ?>
 </head>
 <body>
 <div id="header">
     <div id="header-logo">
-        <a href="<?php echo $this->plugin('url')->direct(array(), 
+        <a href="<?php echo $this->url(array(), 
             array('name' => 'home')) ?>">
             PHPNW11 Tutorial</a>
     </div>
     <div id="header-navigation">
-        <a href="<?php echo $this->plugin('url')->direct(
+        <a href="<?php echo $this->url(
             array(),
             array('name' => 'home')) ?>">Home</a>
         |
-        <a href="<?php echo $this->plugin('url')->direct(
+        <a href="<?php echo $this->url(
             array('controller'=>'album', 'action' => 'index'),
             array('name' => 'default')) ?>">Albums</a>
     </div>
