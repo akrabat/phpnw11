@@ -15,12 +15,10 @@ Zend\Loader\AutoloaderFactory::factory(array(
 ));
 
 
-// Configuration
+// Load modules
 $appConfig = include __DIR__ . '/../configs/application.config.php';
-
 $moduleLoader = new Zend\Loader\ModuleAutoloader($appConfig->module_paths);
 $moduleLoader->register();
-
 $moduleManager = new Zend\Module\Manager(
     $appConfig->modules,
     new Zend\Module\ManagerOptions($appConfig->module_config)

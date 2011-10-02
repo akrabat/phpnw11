@@ -23,7 +23,7 @@ $production = array(
                 'resolver' => 'Zend\View\TemplatePathStack',
                 'options' => array(
                     'script_paths' => array(
-                        'site' => __DIR__ . '/../views',
+                        'application' => __DIR__ . '/../views',
                     ),
                 ),
             ),
